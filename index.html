@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Open-Vocabulary Panoptic Segmentation with Text-to-Image Diffusion Models">
+  <meta name="keywords" content="Vision Transformer, Text Supervision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open-Vocabulary Panoptic Segmentation with Text-to-Image Diffusion Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.12.0/gradio.js" ></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://jerryxu.net">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://jerryxu.net/ODISE">
+            ODISE
+          </a>
+          <a class="navbar-item" href="https://jerryxu.net/GroupViT">
+            GroupViT
+          </a>
+          <a class="navbar-item" href="https://jerryxu.net/VFS">
+            VFS
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Open-Vocabulary Panoptic Segmentation with Text-to-Image Diffusion Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jerryxu.net">Jiarui Xu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/sifei-liu">Sifei Liu</a><sup>2†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://latentspace.cc/">Arash Vahdat</a><sup>2†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wonmin-byeon.github.io/">Wonmin Byeon</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://xiaolonw.github.io/">Xiaolong Wang</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/shalini-gupta">Shalini De Mello</a><sup>2</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California San Diego,</span>
+            <span class="author-block"><sup>2</sup>NVIDIA</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">(* the work was done at an internship at NVIDIA, † equal contribution)</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://youtu.be/DtJsWIUTW-Y"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="groupvit_slide.key"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-slideshare"></i>
+                  </span>
+                  <span>Slide</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/NVlabs/ODISE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/xvjiarui/ODISE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa-solid fa-face-smiling-hands"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video autoplay muted loop playsinline height="100%">
+        <source src="figs/teaser_website.m4v" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <!-- <span style="color: orange; font-weight:bold">Without using any mask annotations</span>, GroupVit groups the image into segments and outputs a semantic segmentation map. -->
+        Segment and categorize any object, even ones not seen during training
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+          <p>
+              We present <span style="font-weight:bold">ODISE: Open-vocabulary DIffusion-based panoptic SEgmentation</span>, which unifies pre-trained text-image diffusion and discriminative models to perform open-vocabulary panoptic segmentation. 
+              Text-to-image diffusion models have shown the remarkable capability of generating high-quality images with diverse open-vocabulary language descriptions. 
+              This demonstrates that their internal representation space is highly correlated with open concepts in the real world. 
+              Text-image discriminative models like CLIP, on the other hand, are good at classifying images into open-vocabulary labels. 
+              We propose to leverage the frozen representation of both these models to perform panoptic segmentation of any category in the wild. 
+              Our approach outperforms the previous state of the art by significant margins on both open-vocabulary panoptic and semantic segmentation tasks. 
+              In particular, with COCO training only, our method achieves 23.4 PQ and 30.0 mIoU on the ADE20K dataset, with 8.3 PQ and 7.9 mIoU absolute improvement over previous state of the art. 
+          </p>
+          </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <!-- <iframe src="https://drive.google.com/file/d/1Z_nx4rbgsLbse39gScquyXZ03_huDN3P/preview"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <iframe src="https://www.youtube.com/embed/vDGsJ-96yb0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Problem Overview</h2>
+    <div class="columns">
+      <div class="column">
+        <p>
+            We  propose to learn open-vocabulary panoptic segmentation with the internal representation of text-to-image diffusion models. 
+            K-Means clustering of the diffusion model's internal representation shows semantically differentiated and localized information wherein objects are nicely grouped together (middle figure). 
+            We leverage these dense and rich diffusion features to perform open-vocabulary panoptic segmentation (right figure).
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="figs/teaser.png" alt="">
+      </div>
+    </div>
+    
+    <h2 class="title is-3">ODISE Architecture</h3>
+    <p> ODISE leverages both text-to-image diffusion model and discriminative model to learn open-vocabulary panoptic segmentation. 
+        We first encode the input image into an implicit text embedding with an implicit captioner (image encoder \(\mathcal{V}\) and MLP). 
+        With the image and its caption as input, we extract their diffusion features from a frozen text-to-image diffusion UNet. 
+        With the UNet features, a mask generator predicts class-agnostic binary masks and their associated mask embedding features.
+        We perform a dot product between the mask embeddings and text embeddings of training category names (<span style="color: #EC603D">red box</span>) or nouns in the image caption (<span style="color: #008F00">green box</span>) to categorize them.
+        The similarity matrix for mask classification is supervised by either cross entropy loss on the ground truth category label (<span style="color: #EC603D">red solid path</span>), or via a grounding loss on the paired image captions (<span style="color: #008F00">green dash path</span>). </p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <video autoplay muted loop playsinline controls>
+          <source src="figs/odise_train_website.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+      <div class="columns">
+        <div class="column">
+          <details>
+            <summary class="title is-6 button">Open-Vocabulary Panoptic Segmentation Demo</summary>
+            <gradio-app src="https://xvjiarui-odise.hf.space"></gradio-app>
+          </details>
+        </div>
+      </div>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@article{xu2022odise,
+  author    = {Xu, Jiarui and Liu, Sifei and Vahdat, Arash and Byeon, Wonmin and Wang, Xiaolong and De Mello, Shalini},
+  title     = {{ODISE: Open-Vocabulary Panoptic Segmentation with Text-to-Image Diffusion Models}},
+  journal   = {arXiv preprint arXiv:},
+  year      = {2022},
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/xvjiarui" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="content">
+        <p>
+          The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
