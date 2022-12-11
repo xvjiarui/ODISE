@@ -23,10 +23,24 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.12.0/gradio.js" ></script>
+  <style>
+
+.src-image{
+  margin-bottom: -4%;
+}
+.dst-image {
+  margin-top:-95%;
+  opacity: 0;
+  transition: 1s ease;
+}
+
+.overlay-image:hover .dst-image {
+  opacity: 1;
+}
+
+</style>
 </head>
 <body>
 
@@ -219,6 +233,15 @@
     </div>
     <!--/ Paper video. -->
 
+    <div class="columns">
+      <div class="column">
+        <details open>
+          <summary class="title is-6 button">Open-Vocabulary Panoptic Segmentation Demo</summary>
+          <gradio-app src="https://xvjiarui-odise.hf.space"></gradio-app>
+        </details>
+      </div>
+    </div>
+
     </div>
   </div>
 </section>
@@ -256,17 +279,281 @@
         </video>
       </div>
     </div>
-      <div class="columns">
-        <div class="column">
-          <details>
-            <summary class="title is-6 button">Open-Vocabulary Panoptic Segmentation Demo</summary>
-            <gradio-app src="https://xvjiarui-odise.hf.space"></gradio-app>
-          </details>
-        </div>
-      </div>
 
   </div>
 </section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Qualitative Results</h2>
+    <div class="columns">
+      <div class="column">
+        <p>
+        To demonstrate open-vocabulary recognition capabilities, we merge category names of LVIS, COCO, ADE20K together and perform open-vocabulary inference with \({\sim} 1.5k\) classes directly (hover to view the input image).
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Open-Vocabulary Panoptic Segmentation on COCO</h3>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/coco_val_supp/000000343561.jpg" class="src-image">
+        <img src="figs/coco_val_supp_gt/000000343561.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/coco_val_supp/000000335800.jpg" class="src-image">
+        <img src="figs/coco_val_supp_gt/000000335800.jpg" class="dst-image">
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/coco_valtest_main/000000002063.jpg" class="src-image">
+        <img src="figs/coco_valtest_main_gt/000000002063.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/coco_valtest_main/000000067213.jpg" class="src-image">
+        <img src="figs/coco_valtest_main_gt/000000067213.jpg" class="dst-image">
+      </div>
+    </div>
+      <details>
+      <summary class="title is-6 button">Click here for more results on COCO</summary>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000386912.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000386912.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000397354.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000397354.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000561958.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000561958.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000570448.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000570448.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000373705.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000373705.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_val_supp/000000374052.jpg" class="src-image">
+          <img src="figs/coco_val_supp_gt/000000374052.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000002925.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000002925.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000158548.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000158548.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000458325.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000458325.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000553221.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000553221.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000001494.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000001494.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/coco_valtest_main/000000320743.jpg" class="src-image">
+          <img src="figs/coco_valtest_main_gt/000000320743.jpg" class="dst-image">
+        </div>
+      </div>
+    </details>
+
+    <h3 class="title is-4">Open-Vocabulary Panoptic Segmentation on ADE20K</h3>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/ade_val_main/ADE_val_00000521.jpg" class="src-image">
+        <img src="figs/ade_val_main_gt/ADE_val_00000521.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/ade_val_supp/ADE_val_00000634.jpg" class="src-image">
+        <img src="figs/ade_val_supp_gt/ADE_val_00000634.jpg" class="dst-image">
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/ade_val_supp/ADE_val_00000132.jpg" class="src-image">
+        <img src="figs/ade_val_supp_gt/ADE_val_00000132.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/ade_val_supp/ADE_val_00000544.jpg" class="src-image">
+        <img src="figs/ade_val_supp_gt/ADE_val_00000544.jpg" class="dst-image">
+      </div>
+    </div>
+      <details>
+      <summary class="title is-6 button">Click here for more results on ADE20K</summary>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000530.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000530.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_main/ADE_val_00000057.jpg" class="src-image">
+          <img src="figs/ade_val_main_gt/ADE_val_00000057.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_main/ADE_val_00000717.jpg" class="src-image">
+          <img src="figs/ade_val_main_gt/ADE_val_00000717.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00001273.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00001273.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000026.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000026.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000056.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000056.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00001511.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00001511.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00001519.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00001519.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00001417.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00001417.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000265.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000265.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000130.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000130.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ade_val_supp/ADE_val_00000146.jpg" class="src-image">
+          <img src="figs/ade_val_supp_gt/ADE_val_00000146.jpg" class="dst-image">
+        </div>
+      </div>
+    </details>
+
+    <h3 class="title is-4">Open-Vocabulary Panoptic Segmentation on Ego4D</h3>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/ego4d_supp/0a0e800f-7d2c-4464-996c-47cd2f323350-00420.jpg" class="src-image">
+        <img src="figs/ego4d_supp_gt/0a0e800f-7d2c-4464-996c-47cd2f323350-00420.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/ego4d_supp/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-03780.jpg" class="src-image">
+        <img src="figs/ego4d_supp_gt/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-03780.jpg" class="dst-image">
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="figs/ego4d_supp/44045866-ed5e-4758-a136-10cc3719f75b-00060.jpg" class="src-image">
+        <img src="figs/ego4d_supp_gt/44045866-ed5e-4758-a136-10cc3719f75b-00060.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="figs/ego4d_supp/0a6b9994-77e3-4d27-972f-e2ff26635504-03600.jpg" class="src-image">
+        <img src="figs/ego4d_supp_gt/0a6b9994-77e3-4d27-972f-e2ff26635504-03600.jpg" class="dst-image">
+      </div>
+    </div>
+      <details>
+      <summary class="title is-6 button">Click here for more results on Ego4D</summary>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a0e800f-7d2c-4464-996c-47cd2f323350-01320.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a0e800f-7d2c-4464-996c-47cd2f323350-01320.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a0e800f-7d2c-4464-996c-47cd2f323350-02880.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a0e800f-7d2c-4464-996c-47cd2f323350-02880.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-08220.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-08220.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-12900.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a0f7371-dab8-47fe-a03b-7a92abdbbfda-12900.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a6b9994-77e3-4d27-972f-e2ff26635504-01920.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a6b9994-77e3-4d27-972f-e2ff26635504-01920.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a7cd6cc-a9a5-4716-bf77-d8b2b9930232-01620.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a7cd6cc-a9a5-4716-bf77-d8b2b9930232-01620.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/bf235f87-22f8-406f-8f77-d4525008d5b0-09000.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/bf235f87-22f8-406f-8f77-d4525008d5b0-09000.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/bf235f87-22f8-406f-8f77-d4525008d5b0-10320.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/bf235f87-22f8-406f-8f77-d4525008d5b0-10320.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-01860.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-01860.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-02760.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-02760.jpg" class="dst-image">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-04080.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-04080.jpg" class="dst-image">
+        </div>
+        <div class="column overlay-image">
+          <img src="figs/ego4d_supp/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-12180.jpg" class="src-image">
+          <img src="figs/ego4d_supp_gt/0a70a39d-47c8-464d-abae-e4c0f19dd5e5-12180.jpg" class="dst-image">
+        </div>
+      </div>
+    </details>
+
+  </div>
+  </div>
+</section>
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
