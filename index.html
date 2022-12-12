@@ -238,7 +238,16 @@
         <details open>
           <summary class="title is-6 button">Open-Vocabulary Panoptic Segmentation Demo (click to toggle)</summary>
           <!-- <gradio-app src="https://xvjiarui-odise.hf.space"></gradio-app> -->
-          <gradio-app src="http://10.110.38.123:81/"></gradio-app>
+          <gradio-app id="gradio-app" src="http://10.110.38.123:81/">
+
+          </gradio-app>
+          <script>
+            // listen for load event in the window
+            window.addEventListener("load", function () {
+              // do things after the DOM loads fully
+              document.getElementById("gradio-app").shadowRoot.querySelector(".gradio-container").classList.remove("dark");
+            });
+          </script>
         </details>
       </div>
     </div>
