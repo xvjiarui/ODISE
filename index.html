@@ -275,7 +275,7 @@
       </div>
     </div>
     
-    <h2 class="title is-3">ODISE Architecture</h3>
+    <h2 class="title is-3">ODISE Training Pipeline</h3>
     <p> ODISE leverages both text-to-image diffusion model and discriminative model to learn open-vocabulary panoptic segmentation. 
         We first encode the input image into an implicit text embedding with an implicit captioner (image encoder \(\mathcal{V}\) and MLP). 
         With the image and its caption as input, we extract their diffusion features from a frozen text-to-image diffusion UNet. 
@@ -286,6 +286,19 @@
       <div class="column is-fullwidth">
         <video autoplay muted loop playsinline controls>
           <source src="figs/odise_train_website.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <h2 class="title is-3">ODISE Inference Pipeline</h3>
+    <p> 
+        To classify each mask embedding into testing categories \(\mathbf{C}_\text{test}\), we compute its similarity with the text encoder \(\mathcal{T}\) embedding of category names.
+        Besides the mask embeddings from text-to-image diffusion model \(\{z_i\}_{i=1}^N\), we also perform mask pooling on the features of image encoder \(\mathcal{V}\) from text-image discriminative model to get \(\{z'_i\}_{i=1}^N\).
+        We fuse the prediction of diffusion model (<span style="color: #005493"> blue solid path </span>) and discriminative model (<span style="color: #7E7E7E"> grey dash path </span>) with geometric mean. 
+      </p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <video autoplay muted loop playsinline controls>
+          <source src="figs/odise_inference_website.mp4" type="video/mp4">
         </video>
       </div>
     </div>
