@@ -23,6 +23,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.12.0/gradio.js" ></script>
   <style>
@@ -183,17 +184,51 @@
 </section>
 
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <!-- <div class="container is-max-desktop"> -->
     <div class="hero-body">
-      <video autoplay muted loop playsinline height="100%">
+      <!-- <video autoplay muted loop playsinline height="100%">
         <source src="figs/teaser_website.m4v" type="video/mp4">
-      </video>
+      </video> -->
+      <div class="container">
+        <div class="carousel results-carousel">
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/00_01.m4v" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/02_03.m4v" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/04_05.m4v" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/06_07.m4v" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/08_09.m4v" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video autoplay muted loop playsinline>
+              <source src="figs/teaser_carousel/10_11.m4v" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
       <h2 class="subtitle has-text-centered">
         <!-- <span style="color: orange; font-weight:bold">Without using any mask annotations</span>, GroupVit groups the image into segments and outputs a semantic segmentation map. -->
         Segment and categorize any object, even ones not seen during training
       </h2>
     </div>
-  </div>
+  <!-- </div> -->
 </section>
 
 <section class="hero is-light is-small">
@@ -289,7 +324,7 @@
         </video>
       </div>
     </div>
-    <h2 class="title is-3">ODISE Inference Pipeline</h3>
+    <!-- <h2 class="title is-3">ODISE Inference Pipeline</h3>
     <p> 
         To classify each mask embedding into testing categories \(\mathbf{C}_\text{test}\), we compute its similarity with the text encoder \(\mathcal{T}\) embedding of category names.
         Besides the mask embeddings from text-to-image diffusion model \(\{z_i\}_{i=1}^N\), we also perform mask pooling on the features of image encoder \(\mathcal{V}\) from text-image discriminative model to get \(\{z'_i\}_{i=1}^N\).
@@ -301,7 +336,7 @@
           <source src="figs/odise_inference_website.mp4" type="video/mp4">
         </video>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </section>
