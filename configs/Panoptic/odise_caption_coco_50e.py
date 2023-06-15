@@ -57,3 +57,9 @@ dataloader.extra_task = dict(
     eval_ctx459=_ctx459_eval,
     eval_pas21=_pas21_eval,
 )
+
+dataloader.pop("test")
+dataloader.pop("wrapper")
+dataloader.pop("evaluator")
+from ..common.data.ins_seginw_d2_eval import tasks as _seginw_tasks
+dataloader.extra_task = _seginw_tasks
